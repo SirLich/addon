@@ -1,0 +1,19 @@
+{
+   "format_version": 2,
+   "header": {
+     "name": "pack.name",
+     "description": "pack.description",
+     "uuid": "ed8798af-4166-43b3-929c-12d6c447c51a",
+     "version": [1, 0, 0],
+     "lock_template_options": true,
+     "base_game_version": [1, 16, 200]
+   },
+   "modules": [
+     {
+       "type": "world_template",
+       "uuid": "d3a04fde-e9c8-4186-a924-a5bd3f5e0ce8",
+       "version": [1, 0, 0]
+     }
+   ],
+   "metadata": { "authors": ["SirLich"] }
+}
