@@ -1,0 +1,11 @@
+{
+	"profiles": {
+		"default": {
+			"export": {
+				"target": "development"
+			},
+			"filters": [],
+			"unsafe": false
+		}
+	}
+}
