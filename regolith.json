@@ -9,6 +9,14 @@
 				{
 					"run_with": "python",
 					"location": "./filters/kra_convert.py"
+				},
+				{
+					"run_with": "python",
+					"location": "./filters/flat_features.py"
+				},
+				{
+					"run_with": "python",
+					"location": "./filters/languages.py"
 				}
 			],
 			"unsafe": false
