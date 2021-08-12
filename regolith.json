@@ -1,10 +1,16 @@
 {
+	"name": "addon",
 	"profiles": {
-		"default": {
+		"dev": {
 			"export": {
 				"target": "development"
 			},
-			"filters": [],
+			"filters": [
+				{
+					"run_with": "python",
+					"location": "./filters/kra_convert.py"
+				}
+			],
 			"unsafe": false
 		}
 	}
