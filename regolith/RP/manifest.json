@@ -9,7 +9,7 @@
   },
   "modules": [
     {
-      "description": "Example vanilla resource pack",
+      "description": "sirlich vanilla resource pack",
       "type": "resources",
       "uuid": "271a26b3-6472-410a-a379-9c96516de13b",
       "version": [1, 0, 0]
