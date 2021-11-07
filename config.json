@@ -1,6 +1,6 @@
 {
-  "name": "Project Name",
-  "author": "Your name",
+  "name": "addon",
+  "author": "SirLich",
   "packs": {
     "behaviorPack": "./packs/BP",
     "resourcePack": "./packs/RP"
@@ -9,7 +9,11 @@
     "profiles": {
       "dev": {
         "unsafe": false,
-        "filters": [],
+        "filters": [
+          {
+            "filter": "kra_convert"
+          }
+        ],
         "export": {
           "target": "development",
           "rpPath": "",

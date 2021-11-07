@@ -1,0 +1,59 @@
+{
+	"format_version": "1.10.0",
+	"particle_effect": {
+		"description": {
+			"identifier": "sirlich:tile2",
+			"basic_render_parameters": {
+				"material": "particles_opaque",
+				"texture": "textures/particles/tile"
+			}
+		},
+		"components": {
+			"minecraft:emitter_initialization": {
+				"creation_expression": "v.posx = -1;v.posy = 0;v.posz = 0;v.size = 10;v.lifespan = 2;v.speed = v.size * v.size;"
+			},
+			"minecraft:emitter_rate_instant": {
+				"num_particles": "v.speed"
+			},
+			"minecraft:emitter_lifetime_looping": {
+				"active_time": "v.lifespan",
+				"sleep_time": 0.4
+			},
+			"minecraft:emitter_shape_point": {
+				"offset": ["v.posz = (v.posx == v.size - 1) ? v.posz + 1 : v.posz ; return variable.posz;", 0, "v.posx = (v.posx < v.size - 1) ? v.posx + 1 : 0 ; return v.posx;"]
+			},
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": "v.lifespan"
+			},
+			"minecraft:particle_appearance_billboard": {
+				"size": [0.4, 0.4],
+				"facing_camera_mode": "direction_y",
+				"direction": {
+					"mode": "custom",
+					"custom_direction": [1, 0, 0]
+				},
+				"uv": {
+					"texture_width": 2,
+					"texture_height": 1,
+					"uv": [1, 0],
+					"uv_size": [1, 1]
+				}
+			},
+			"minecraft:particle_lifetime_events": {
+				"creation_event": "run",
+				"custom_events": {
+					"run": "v.posx"
+				}
+			}
+		},
+		"events": {
+			"run": {
+				"particle_effect": {
+					"effect": "blastoff:trail",
+					"type": "emitter",
+					"pre_effect_expression": "v.color_extent = math.random(0, 1); v.color_red = 1; v.color_green = v.color_extent; v.color_blue = 1 - v.color_extent;"
+				}
+			}
+		}
+	}
+}
