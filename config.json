@@ -1,29 +1,32 @@
 {
-  "name": "addon",
-  "author": "SirLich",
-  "packs": {
-    "behaviorPack": "./packs/BP",
-    "resourcePack": "./packs/RP"
-  },
-  "regolith": {
-    "profiles": {
-      "dev": {
-        "unsafe": false,
-        "filters": [
-          {
-            "filter": "kra_convert"
-          }
-        ],
-        "export": {
-          "target": "development",
-          "rpPath": "",
-          "bpPath": "",
-          "worldName": "",
-          "worldPath": "",
-          "readOnly": false
-        },
-        "dataPath": "./packs/data"
-      }
+    "name": "addon",
+    "author": "SirLich",
+    "packs": {
+        "behaviorPack": "./packs/BP",
+        "resourcePack": "./packs/RP"
+    },
+    "regolith": {
+        "profiles": {
+            "dev": {
+                "unsafe": false,
+                "filters": [
+                    {
+                        "filter": "kra_convert"
+                    },
+                    {
+                        "runWith": "python",
+                        "script": "./filters/particle_gen.py",
+                        "settings": {
+                            "size": 31
+                        }
+                    }
+                ],
+                "export": {
+                    "target": "development",
+                    "readOnly": false
+                },
+                "dataPath": "./packs/data"
+            }
+        }
     }
-  }
 }

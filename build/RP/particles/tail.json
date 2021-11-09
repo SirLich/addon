@@ -1,0 +1,60 @@
+{
+	"format_version": "1.17.41",
+		
+	"particle_effect": {
+		"description": {
+			"identifier": "blastoff:trail",
+			"basic_render_parameters": {
+				"material": "particles_blend",
+				"texture": "textures/particle/particles"
+			}
+		},
+		"components": {
+			"minecraft:emitter_initialization": {
+				"creation_expression": "v.angle = math.random_integer(0, 360); v.range = math.random(32, 64); v.trajectoryx = v.range * math.cos(v.angle); v.trajectoryz = v.range * math.sin(v.angle);v.trajectoryy = math.random(64, 128);"
+			},
+			"minecraft:emitter_rate_steady": {
+				"spawn_rate": "32 - v.emitter_age * 16",
+				"max_particles": 64
+			},
+			"minecraft:emitter_lifetime_once": {
+				"active_time": 0.5
+			},
+			"minecraft:emitter_shape_point": {
+				"direction": ["v.trajectoryx", "v.trajectoryy", "v.trajectoryz"]
+			},
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": 0.75
+			},
+			"minecraft:particle_initial_spin": {
+				"rotation_rate": "90 - v.emitter_age * 90"
+			},
+			"minecraft:particle_initial_speed": 64,
+			"minecraft:particle_motion_dynamic": {
+				"linear_acceleration": [0, -32, 0],
+				"linear_drag_coefficient": 0.125,
+				"rotation_acceleration": -15
+			},
+			"minecraft:particle_appearance_billboard": {
+				"size": ["0.5 * (1 - (v.particle_age / v.particle_lifetime) / 2)", "0.5 * (1 - (v.particle_age / v.particle_lifetime) / 2)"],
+				"facing_camera_mode": "lookat_xyz",
+				"uv": {
+					"texture_width": 128,
+					"texture_height": 128,
+					"uv": [56, 96],
+					"uv_size": [8, 8]
+				}
+			},
+			"minecraft:particle_appearance_tinting": {
+				"color": {
+					"interpolant": "v.particle_age",
+					"gradient": {
+						"0.0": ["v.color_red", "math.max(v.color_green, v.color_blue) - 0.1", "math.max(v.color_blue, v.color_green) - 0.1", 1],
+						"0.5": ["v.color_red", "v.color_green", "v.color_blue", 1],
+						"1.5": ["v.color_red", "v.color_green", "v.color_blue", 0]
+					}
+				}
+			}
+		}
+	}
+}

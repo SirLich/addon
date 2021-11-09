@@ -1,0 +1,103 @@
+{
+	"format_version": "1.17.41",
+	
+	"particle_effect": {
+		"description": {
+			"identifier": "life:board_part",
+			
+			"basic_render_parameters": {
+				"texture": "textures/blocks/wool_colored_white",
+				"material": "particles_alpha"
+			}
+		},
+		
+		"components": {
+			"minecraft:emitter_initialization": {
+				"creation_expression": "
+					t.size_x = 31;
+					t.size_z = 31;
+					v.update_rate = 64;
+					v.update_delay = 4;
+					v.cell.size = 1;
+					v.cell.padding = 0;
+					
+					t.current_board_row1_column1 = false;
+					t.current_board_row1_column2 = false;
+					t.current_board_row1_column3 = false;
+					t.current_board_row2_column1 = true;
+					t.current_board_row2_column2 = true;
+					t.current_board_row2_column3 = true;
+					t.current_board_row3_column1 = false;
+					t.current_board_row3_column2 = false;
+					t.current_board_row3_column3 = false;
+					
+					t.current_position = 0;
+				"
+			},
+			
+			"minecraft:emitter_shape_point": {
+				"offset": [0, "v.height_offset ?? 0", 0]
+			},
+			
+			"minecraft:emitter_lifetime_once": {
+				"active_time": 4
+			},
+			"minecraft:emitter_rate_instant": {
+				"num_particles": "t.size_x * t.size_z"
+			},
+			
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": 0
+			},
+			"minecraft:particle_lifetime_events": {
+				"timeline": {
+					"0": "place_cell"
+				}
+			}
+		},
+		
+		"events": {
+			"place_cell": {
+				"particle_effect": {
+					"effect": "life:cell",
+					"type": "emitter",
+					"pre_effect_expression": "
+						v.cell.x = math.mod(t.current_position, t.size_x);
+						v.cell.z = math.floor(t.current_position / t.size_z);
+						
+						v.cell.x == 0 && v.cell.z == 0 ? {
+							v.cell.alive = t.current_board_row1_column1;
+						};
+						v.cell.x == 0 && v.cell.z == 1 ? {
+							v.cell.alive = t.current_board_row1_column2;
+						};
+						v.cell.x == 0 && v.cell.z == 2 ? {
+							v.cell.alive = t.current_board_row1_column3;
+						};
+						v.cell.x == 1 && v.cell.z == 0 ? {
+							v.cell.alive = t.current_board_row2_column1;
+						};
+						v.cell.x == 1 && v.cell.z == 1 ? {
+							v.cell.alive = t.current_board_row2_column2;
+						};
+						v.cell.x == 1 && v.cell.z == 2 ? {
+							v.cell.alive = t.current_board_row2_column3;
+						};
+						v.cell.x == 2 && v.cell.z == 0 ? {
+							v.cell.alive = t.current_board_row3_column1;
+						};
+						v.cell.x == 2 && v.cell.z == 1 ? {
+							v.cell.alive = t.current_board_row3_column2;
+						};
+						v.cell.x == 2 && v.cell.z == 2 ? {
+							v.cell.alive = t.current_board_row3_column3;
+						};
+					"
+				},
+				"expression": "
+					t.current_position = t.current_position + 1;
+				"
+			}
+		}
+	}
+}
