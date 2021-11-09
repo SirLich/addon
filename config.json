@@ -22,7 +22,7 @@
                     }
                 ],
                 "export": {
-                    "target": "development",
+                    "target": "local",
                     "readOnly": false
                 },
                 "dataPath": "./packs/data"
