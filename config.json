@@ -19,10 +19,17 @@
                         "settings": {
                             "size": 31
                         }
+                    },
+                    {
+                        "runWith": "python",
+                        "script": "./filters/board_gen.py",
+                        "settings": {
+                            "size": 25
+                        }
                     }
                 ],
                 "export": {
-                    "target": "local",
+                    "target": "development",
                     "readOnly": false
                 },
                 "dataPath": "./packs/data"

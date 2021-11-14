@@ -1,0 +1,26 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "sirlich:block",
+            "min_engine_version": "1.8.0",
+            "materials": {
+                "default": "cow"
+            },
+            "textures": {
+                "white": "textures/entity/block/white",
+                "black": "textures/entity/block/black"
+            },
+            "geometry": {
+                "default": "geometry.block"
+            },
+            "render_controllers": [
+                "controller.render.block"
+            ],
+            "spawn_egg": {
+                "texture": "spawn_egg",
+                "texture_index": 1
+            }
+        }
+    }
+}

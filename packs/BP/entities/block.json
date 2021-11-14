@@ -1,0 +1,85 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "sirlich:block",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "live": {
+                "minecraft:skin_id": {
+                    "value": 1
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "block",
+                        "live"
+                    ]
+                }
+            },
+            "dead": {
+                "minecraft:skin_id": {
+                    "value": 0
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "block",
+                        "dead"
+                    ]
+                }
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "dead"
+                    ]
+                }
+            },
+            "live": {
+                "add": {
+                    "component_groups": [
+                        "live"
+                    ]
+                }
+            },
+            "dead": {
+                "add": {
+                    "component_groups": [
+                        "dead"
+                    ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:nameable": {
+                "allow_name_tag_renaming": true,
+                "always_show": false
+            },
+            "minecraft:collision_box": {
+                "width": 0.55,
+                "height": 0.5
+            },
+            "minecraft:damage_sensor": {
+                "triggers": {
+                    "cause": "all",
+                    "deals_damage": false
+                }
+            },
+            "minecraft:health": {
+                "value": 10,
+                "max": 10
+            },
+            "minecraft:physics": {
+                "has_gravity": false
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            }
+        }
+    }
+}

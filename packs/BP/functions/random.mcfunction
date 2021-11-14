@@ -1,0 +1,1 @@
+scoreboard players random @e[family=block] gol 1 4
